@@ -4,8 +4,7 @@
 <a href="https://www.npmjs.com/package/@chahindb7/vue3-ssr-carousel"><img src="https://img.shields.io/npm/v/@chahindb7/vue3-ssr-carousel.svg?style=flat&colorA=18181B&colorB=28CF8D" alt="Version"></a>
 <a href="https://www.npmjs.com/package/@chahindb7/vue3-ssr-carousel"><img src="https://img.shields.io/npm/dm/@chahindb7/vue3-ssr-carousel.svg?style=flat&colorA=18181B&colorB=28CF8D" alt="Downloads"></a>
 
-#### N.B: This repository is a fork of [vue-ssr-carousel](https://github.com/BKWLD/vue-ssr-carousel) with some changes to make it work with Vue 3 and Nuxt 3.
-
+#### N.B: This repository is a fork of [vue-ssr-carousel](https://github.com/BKWLD/vue-ssr-carousel) with some changes to make it work with Vue 3 and Nuxt 3. 
 #### Written from CoffeeScript/Pug/Stylus to JS/TS/SCSS.
 
 A performance focused Vue 3/Nuxt 3 carousel designed for SSR/SSG environments. No JS is used to lay out the carousel or
@@ -24,23 +23,24 @@ yarn add @chahindb7/vue3-ssr-carousel
 ### Default
 
 ```js
-// Import Vue and SsrCarousel from the source file.
-import SsrCarousel from '@chahindb7/vue3-ssr-carousel'
+// Import Vue and Carousel from the source file.
+import Carousel from '@chahindb7/vue3-ssr-carousel';
 import '@chahindb7/vue3-ssr-carousel/style'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.component('ssr-carousel', SsrCarousel)
-})
+  nuxtApp.vueApp.component('Carousel', Carousel);
+});
 ```
 
 ## Usage
 
 ```vue
-<ssr-carousel>
+
+<Carousel>
   <div class="slide">Slide 1</div>
   <div class="slide">Slide 2</div>
   <div class="slide">Slide 3</div>
-</ssr-carousel>
+</Carousel>
 ```
 
 ## API
@@ -48,7 +48,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 ### Props
 
 | **Props**           | **Default** | **Description**                                                                                                                                                                                                                                                                                                                                                             |
-| ------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|---------------------|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `slides-per-page`   | `1`         | How many slides are shown per page. Can be set to `null` to allow for flexible widths for slides. See https://vue-ssr-carousel.netlify.app/responsive and note the caveats mentiond within.                                                                                                                                                                                 |
 | `gutter`            | `20`        | The size of the space between slides. This can a number or any CSS resolvable string. See https://vue-ssr-carousel.netlify.app/gutters.                                                                                                                                                                                                                                     |
 | `paginate-by-slide` | `false`     | When `false`, dragging the carousel or interacting with the arrows will advance a full page of slides at a time. When `true`, the carousel will come to a rest at each slide.                                                                                                                                                                                               |
@@ -70,7 +70,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 ### Slots
 
 | **Slots**    | **Description**                                      |
-| ------------ | ---------------------------------------------------- |
+|--------------|------------------------------------------------------|
 | `default`    | Where your slides get injected.                      |
 | `back-arrow` | Replace the default back icon. **Slot props:**       |
 |              | `disabled` - True if at first page when not looping. |
@@ -83,7 +83,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 ### Methods
 
 | Methods       | Description                                                                                                                  |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+|---------------|------------------------------------------------------------------------------------------------------------------------------|
 | `next()`      | Go forward a page or slide, depending on the `paginate-by-slide` prop                                                        |
 | `back()`      | Go back a page or slide, depending on the `paginate-by-slide` prop                                                           |
 | `goto(index)` | Go to an index. If `paginate-by-slide` is `false`, this equates to a page offset. If `true`, this equates to a slide offset. |
@@ -91,7 +91,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 ### Events
 
 | Events                   | Description                                                        |
-| ------------------------ | ------------------------------------------------------------------ |
+|--------------------------|--------------------------------------------------------------------|
 | `change({ index })`      | Fired when the internal index counter changes.                     |
 | `update:modelValue`      | Same as `change` but intended for use with `v-model`.              |
 | `press`                  | Fired on mouse or touch down.                                      |
